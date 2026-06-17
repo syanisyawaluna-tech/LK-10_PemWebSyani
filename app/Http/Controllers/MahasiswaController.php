@@ -21,11 +21,11 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim'      => 'required|string|max:20|unique:mahasiswas',
-            'nama'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:mahasiswas',
-            'jurusan'  => 'required|string|max:100',
-            'angkatan' => 'required|integer|min:2000|max:' . date('Y'),
+            'nim'          => 'required|string|max:20|unique:mahasiswas',
+            'nama'         => 'required|string|max:100',
+            'email'        => 'required|email|unique:mahasiswas',
+            'jenis_barang' => 'required|string|max:100',
+            'angkatan'     => 'required|integer|min:2000|max:' . date('Y'),
         ]);
 
         Mahasiswa::create($request->all());
@@ -43,11 +43,11 @@ class MahasiswaController extends Controller
     public function update(Request $request, int $id)
     {
         $request->validate([
-            'nim'      => 'required|string|max:20|unique:mahasiswas,nim,' . $id,
-            'nama'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:mahasiswas,email,' . $id,
-            'jurusan'  => 'required|string|max:100',
-            'angkatan' => 'required|integer|min:2000|max:' . date('Y'),
+            'nim'          => 'required|string|max:20|unique:mahasiswas,nim,' . $id,
+            'nama'         => 'required|string|max:100',
+            'email'        => 'required|email|unique:mahasiswas,email,' . $id,
+            'jenis_barang' => 'required|string|max:100',
+            'angkatan'     => 'required|integer|min:2000|max:' . date('Y'),
         ]);
 
         $mahasiswa = Mahasiswa::findOrFail($id);

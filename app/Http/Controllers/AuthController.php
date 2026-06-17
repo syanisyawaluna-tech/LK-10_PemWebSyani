@@ -17,7 +17,7 @@ class AuthController extends Controller
         $this->workos = new WorkOS(
             apiKey: config('services.workos.api_key'),
             clientId: config('services.workos.client_id'),
-        );
+);
     }
 
     /**

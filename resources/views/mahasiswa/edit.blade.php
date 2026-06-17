@@ -43,11 +43,11 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Jurusan</label>
-                        <input type="text" name="jurusan"
-                            class="form-control @error('jurusan') is-invalid @enderror"
-                            value="{{ old('jurusan', $mahasiswa->jurusan) }}">
-                        @error('jurusan')
+                        <label class="form-label fw-semibold">Jenis Barang</label>
+                        <input type="text" name="jenis_barang"
+                            class="form-control @error('jenis_barang') is-invalid @enderror"
+                            value="{{ old('jenis_barang', $mahasiswa->jenis_barang) }}">
+                        @error('jenis_barang')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

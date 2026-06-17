@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Masuk ke aplikasi LK-10 untuk mengelola data mahasiswa.">
+    <meta name="description" content="Masuk ke aplikasi LK-10 untuk mengelola data mahasiswa Informatika.">
     <title>Masuk — LK-10</title>
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
@@ -21,7 +21,7 @@
 
             {{-- Header text --}}
             <div class="card-header-text">
-                <p class="card-title">Masuk ke LK-10</p>
+                <p class="card-title">Masuk ke Data Mahasiswa Informatika Peminjaman Alat Lab Riset</p>
                 <p class="card-subtitle">Pilih metode login untuk melanjutkan</p>
             </div>
 

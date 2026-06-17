@@ -10,7 +10,7 @@ class Mahasiswa extends Model
         'nama',
         'nim',
         'email',
-        'jurusan',
+        'jenis_barang',
         'angkatan',
     ];
 }
