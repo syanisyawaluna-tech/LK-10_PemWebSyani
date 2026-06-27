@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Http\Requests\MahasiswaRequest;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -18,48 +19,29 @@ class MahasiswaController extends Controller
         return view('mahasiswa.create');
     }
 
-    public function store(Request $request)
+    public function store(MahasiswaRequest $request)
     {
-        $request->validate([
-            'nim'          => 'required|string|max:20|unique:mahasiswas',
-            'nama'         => 'required|string|max:100',
-            'email'        => 'required|email|unique:mahasiswas',
-            'jenis_barang' => 'required|string|max:100',
-            'angkatan'     => 'required|integer|min:2000|max:' . date('Y'),
-        ]);
-
-        Mahasiswa::create($request->all());
+        Mahasiswa::create($request->validated());
 
         return redirect()->route('mahasiswa.index')
             ->with('success', 'Data berhasil ditambahkan!');
     }
 
-    public function edit(int $id)
+    public function edit(Mahasiswa $mahasiswa)
     {
-        $mahasiswa = Mahasiswa::findOrFail($id);
         return view('mahasiswa.edit', compact('mahasiswa'));
     }
 
-    public function update(Request $request, int $id)
+    public function update(MahasiswaRequest $request, Mahasiswa $mahasiswa)
     {
-        $request->validate([
-            'nim'          => 'required|string|max:20|unique:mahasiswas,nim,' . $id,
-            'nama'         => 'required|string|max:100',
-            'email'        => 'required|email|unique:mahasiswas,email,' . $id,
-            'jenis_barang' => 'required|string|max:100',
-            'angkatan'     => 'required|integer|min:2000|max:' . date('Y'),
-        ]);
-
-        $mahasiswa = Mahasiswa::findOrFail($id);
-        $mahasiswa->update($request->all());
+        $mahasiswa->update($request->validated());
 
         return redirect()->route('mahasiswa.index')
             ->with('success', 'Data berhasil diperbarui!');
     }
 
-    public function destroy(int $id)
+    public function destroy(Mahasiswa $mahasiswa)
     {
-        $mahasiswa = Mahasiswa::findOrFail($id);
         $mahasiswa->delete();
 
         return redirect()->route('mahasiswa.index')

@@ -6,25 +6,16 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('mahasiswa.index');
-    }
-    return view('auth.login');
+    return redirect()->route('login');
 });
 
-Route::get('/auth/login', function () {
+Route::get('/login', function () {
     if (Auth::check()) {
         return redirect()->route('mahasiswa.index');
     }
     return view('auth.login');
 })->name('login');
 
-Route::get('/login-page', function () {
-    if (Auth::check()) {
-        return redirect()->route('mahasiswa.index');
-    }
-    return view('auth.login');
-})->name('login-page');
 
 Route::get('/auth/redirect', [AuthController::class, 'login'])->name('auth.redirect');
 Route::get('/auth/callback', [AuthController::class, 'callback'])->name('auth.callback');

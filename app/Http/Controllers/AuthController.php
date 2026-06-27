@@ -112,7 +112,7 @@ class AuthController extends Controller
             try {
                 $logoutUrl = $this->workos->userManagement()->getLogoutUrl(
                     sessionId: $sessionId,
-                    returnTo: url('/login-page')
+                    returnTo: route('login')
                 );
                 return redirect()->away($logoutUrl);
             } catch (\Throwable $e) {
